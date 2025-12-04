@@ -4,7 +4,14 @@
     "organization": "Google",
     "issueDate": "2024",
     "credentialUrl": "https://www.coursera.org/account/accomplishments/professional-cert/4MW597BRP8LV",
-    "imageUrl": "certificates/google-digital-marketing.jpg"
+    "imageUrl": "certificates/google-digital-marketing-small.jpg"
+  },
+  {
+    "name": "Accelerate Your Job Search with AI",
+    "organization": "Google",
+    "issueDate": "2024",
+    "credentialUrl": "https://www.linkedin.com/in/bakry1989/details/certifications/",
+    "imageUrl": "certificates/accelerate-job-search-ai.jpg"
   },
   {
     "name": "AI for Excel Formulas",
@@ -21,20 +28,6 @@
     "imageUrl": "certificates/accounting-fundamentals.jpg"
   },
   {
-    "name": "Satisfaction Guaranteed: Develop Customer Loyalty Online",
-    "organization": "Google",
-    "issueDate": "2024",
-    "credentialUrl": "https://www.linkedin.com/in/bakry1989/details/certifications/",
-    "imageUrl": "https://media.licdn.com/dms/image/v2/D4E0BAQGv3cqOuUMY7g/company-logo_100_100/B4EZmhegXHGcAU-/0/1759350753990/google_logo?e=1766620800&v=beta&t=z98b-Rmxi0L_V1KC0fODQFWN7JjdvN7jwGYm8DfU8tE"
-  },
-  {
-    "name": "Accelerate Your Job Search with AI",
-    "organization": "Google",
-    "issueDate": "2024",
-    "credentialUrl": "https://www.linkedin.com/in/bakry1989/details/certifications/",
-    "imageUrl": "https://media.licdn.com/dms/image/v2/D4E0BAQGv3cqOuUMY7g/company-logo_100_100/B4EZmhegXHGcAU-/0/1759350753990/google_logo?e=1766620800&v=beta&t=z98b-Rmxi0L_V1KC0fODQFWN7JjdvN7jwGYm8DfU8tE"
-  },
-  {
     "name": "Strategic Planning Foundations",
     "organization": "LinkedIn Learning",
     "issueDate": "2024",
@@ -45,6 +38,13 @@
     "name": "Power BI: Dashboards for Beginners",
     "organization": "LinkedIn Learning",
     "issueDate": "2024",
+    "credentialUrl": "https://www.linkedin.com/in/bakry1989/details/certifications/",
+    "imageUrl": "https://media.licdn.com/dms/image/v2/C560BAQHaVYd13rRz3A/company-logo_100_100/company-logo_100_100/0/1638831590218/linkedin_logo?e=1766620800&v=beta&t=eOPbKo2R3Y-Sqe5Cf6n17YORrbT2NpKNEna2M8xpYmQ"
+  },
+  {
+    "name": "Financial Modeling Foundations",
+    "organization": "LinkedIn Learning",
+    "issueDate": "2023",
     "credentialUrl": "https://www.linkedin.com/in/bakry1989/details/certifications/",
     "imageUrl": "https://media.licdn.com/dms/image/v2/C560BAQHaVYd13rRz3A/company-logo_100_100/company-logo_100_100/0/1638831590218/linkedin_logo?e=1766620800&v=beta&t=eOPbKo2R3Y-Sqe5Cf6n17YORrbT2NpKNEna2M8xpYmQ"
   },
