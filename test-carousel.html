@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Carousel</title>
+    <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif;">
+
+<h2 style="text-align: center;">LinkedIn Posts</h2>
+
+<div style="position: relative; max-width: 1400px; margin: 0 auto; padding: 0 80px;">
+    <button onclick="moveLinkedIn(-1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 60px; height: 60px; border: none; background: white; color: #0a66c2; border-radius: 50%; font-size: 1.5em; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 10;">←</button>
+    
+    <div style="overflow: hidden; border-radius: 20px;">
+        <div id="linkedinTrack" style="display: flex; transition: transform 0.6s ease;">
+            <div style="min-width: 100%; padding: 20px;">
+                <div style="max-width: 550px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); padding: 30px;">
+                    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7363837219591118849" height="600" width="100%" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div style="min-width: 100%; padding: 20px;">
+                <div style="max-width: 550px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); padding: 30px;">
+                    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7399359511775444992" height="600" width="100%" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div style="min-width: 100%; padding: 20px;">
+                <div style="max-width: 550px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); padding: 30px;">
+                    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7377988054352949248" height="600" width="100%" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="moveLinkedIn(1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 60px; height: 60px; border: none; background: white; color: #0a66c2; border-radius: 50%; font-size: 1.5em; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 10;">→</button>
+</div>
+
+<div id="indicators" style="display: flex; justify-content: center; gap: 12px; margin-top: 30px;"></div>
+
+<hr style="margin: 60px 0;">
+
+<h2 style="text-align: center;">Certificates</h2>
+
+<div style="position: relative; max-width: 1400px; margin: 0 auto; padding: 0 80px;">
+    <button onclick="moveCerts(-1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 60px; height: 60px; border: none; background: white; color: #0a66c2; border-radius: 50%; font-size: 1.5em; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 10;">←</button>
+    
+    <div style="overflow: hidden; border-radius: 20px;">
+        <div id="certsTrack" style="display: flex; transition: transform 0.6s ease;">
+            <div style="min-width: 100%; padding: 20px; text-align: center;">Loading...</div>
+        </div>
+    </div>
+
+    <button onclick="moveCerts(1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 60px; height: 60px; border: none; background: white; color: #0a66c2; border-radius: 50%; font-size: 1.5em; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 10;">→</button>
+</div>
+
+<div id="certIndicators" style="display: flex; justify-content: center; gap: 12px; margin-top: 30px;"></div>
+
+<script>
+// LinkedIn Carousel
+let currentLinkedIn = 0;
+const linkedinTrack = document.getElementById('linkedinTrack');
+const linkedinSlides = 3;
+
+function moveLinkedIn(dir) {
+    currentLinkedIn += dir;
+    if (currentLinkedIn < 0) currentLinkedIn = linkedinSlides - 1;
+    if (currentLinkedIn >= linkedinSlides) currentLinkedIn = 0;
+    linkedinTrack.style.transform = 'translateX(-' + (currentLinkedIn * 100) + '%)';
+    updateLinkedInIndicators();
+}
+
+function updateLinkedInIndicators() {
+    const container = document.getElementById('indicators');
+    container.innerHTML = '';
+    for (let i = 0; i < linkedinSlides; i++) {
+        const dot = document.createElement('div');
+        dot.style.cssText = 'width: 10px; height: 10px; border-radius: 50%; background: ' + (i === currentLinkedIn ? '#0a66c2' : '#bdc3c7') + '; cursor: pointer;';
+        dot.onclick = () => { currentLinkedIn = i; linkedinTrack.style.transform = 'translateX(-' + (i * 100) + '%)'; updateLinkedInIndicators(); };
+        container.appendChild(dot);
+    }
+}
+
+updateLinkedInIndicators();
+setInterval(() => moveLinkedIn(1), 3000);
+
+// Certificates Carousel
+let currentCert = 0;
+let totalCerts = 0;
+
+fetch('https://abobakeralsaraf.github.io/linkedin-featured-posts/certifications.json')
+    .then(r => r.json())
+    .then(data => {
+        totalCerts = data.length;
+        const track = document.getElementById('certsTrack');
+        track.innerHTML = '';
+        
+        data.forEach(cert => {
+            const slide = document.createElement('div');
+            slide.style.cssText = 'min-width: 100%; padding: 20px;';
+            slide.innerHTML = '<div style="max-width: 900px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); padding: 30px; text-align: center;"><img src="https://abobakeralsaraf.github.io/linkedin-featured-posts/' + cert.imageUrl + '" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;"><h3>' + cert.name + '</h3><p style="color: #0a66c2; font-size: 1.2em;">' + cert.organization + '</p><p style="color: #666;">' + cert.issueDate + '</p></div>';
+            track.appendChild(slide);
+        });
+        
+        updateCertIndicators();
+        setInterval(() => moveCerts(1), 3000);
+    });
+
+function moveCerts(dir) {
+    if (totalCerts === 0) return;
+    currentCert += dir;
+    if (currentCert < 0) currentCert = totalCerts - 1;
+    if (currentCert >= totalCerts) currentCert = 0;
+    document.getElementById('certsTrack').style.transform = 'translateX(-' + (currentCert * 100) + '%)';
+    updateCertIndicators();
+}
+
+function updateCertIndicators() {
+    const container = document.getElementById('certIndicators');
+    container.innerHTML = '';
+    for (let i = 0; i < totalCerts; i++) {
+        const dot = document.createElement('div');
+        dot.style.cssText = 'width: 10px; height: 10px; border-radius: 50%; background: ' + (i === currentCert ? '#0a66c2' : '#bdc3c7') + '; cursor: pointer;';
+        dot.onclick = () => { currentCert = i; document.getElementById('certsTrack').style.transform = 'translateX(-' + (i * 100) + '%)'; updateCertIndicators(); };
+        container.appendChild(dot);
+    }
+}
+</script>
+
+</body>
+</html>
